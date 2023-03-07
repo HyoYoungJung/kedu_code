@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Member</title>
+</head>
+<body>
+	<h1>회원 전용 페이지입니다.</h1>
+	
+	<div sec:authorize="hasRole('USER')">Has USER ROLE</div> <!-- 롤이 ROLE_USER이면, Has USER ROLE을 출력해줘! -->
+	<div sec:authorize="hasRole('MANAGER')">Has MANAGER ROLE</div>
+	<div sec:authorize="hasRole('ADMIN')">Has ADMIN ROLE</div>
+	
+	<div sec:authorize="isAuthenticated()"> <!-- 승인되었으면 출력해줘. -->
+		Only Authenticated user can see this Text <!-- 승인된 유저만 이 글을 볼 수 있음 -->
+	</div>
+	
+	Authenticated username:
+	<div sec:authentication="name"></div>
+	Authenticated user roles:
+	<div sec:authentication="principal.authorities">
+	
+	</div>
+	
+</body>
+</html>
