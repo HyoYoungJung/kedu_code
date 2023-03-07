@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>exLayout1</title>
+</head>
+<body>
+	<h1>Fragment Test</h1>
+	<div style="border: 1px solid blue">
+		<th:block th:replace="~{/fragments/fragment2}"></th:block>
+	</div>
+	<h1>Layout 1 - 1</h1> <!-- replace는 자체가 교체, 콘솔로그 상 h2만 뜸 -->
+	<div th:replace="~{/fragments/fragment1::part1}"></div>
+	
+	<h1>Layout 1 - 2</h1> <!-- insert는 div 자체가 추가, 콘솔로그 상 div도 같이 뜸 -->
+	<div th:insert="~{/fragments/fragment1::part2}"></div>
+	
+	<h1>Layout 1 - 3</h1> <!-- Layout 3은 div 안 썼고, 1번과 같은 결과로 나타남 -->
+	<th:block th:replace="~{/fragments/fragment1::part3}">
+<!-- <th:block th:replace="~{/fragments/fragment1}"> <!-- Part 1~3 통째로 들어옴 -->  -->
+	</th:block>
+	
+</body>
+</html>

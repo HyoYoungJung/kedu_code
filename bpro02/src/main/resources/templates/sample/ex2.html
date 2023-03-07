@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ex2</title>
+<style>
+.target{ background-color: green; }
+</style>
+
+</head>
+<body>
+	<ul>
+		<li th:each="dto:${list}">
+			[[${dto}]]
+		</li>
+	</ul>
+	
+	<ul>
+		<li th:each="dto, status:${list}">
+			[[${status.index}]] ----- [[${dto}]]
+		</li>
+	</ul>
+	
+	<ul>
+		<li th:each="dto, state:${list}" th:if="${dto.sno % 5 == 0}">
+			[[${dto}]]
+		</li>
+	</ul>
+	
+	<ul> 	<!-- 번호가 5일때 다르게 뜨도록 -->
+		<li th:each="dto, state:${list}">
+			<span th:if="${dto.sno % 5 == 0}" th:text="${'----------------' + dto.sno}"></span>
+			<span th:unless="${dto.sno % 5 == 0}" th:text = "${dto.first}"></span>
+		</li>
+	</ul>
+	
+	<ul>    <!-- 번호가 5일때만 다르게 뜨도록 -->
+		<li th:each="dto, state:${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}">
+		</li>
+	</ul>
+	
+	<ul>    <!-- 번호가 5일때만 CSS 다르게 뜨도록 -->
+		<li th:each="dto, state:${list}"> 
+<!--  		<li th:each="dto, state:${list}" th:class="${dto.sno%5==0}?'target'":th:text="${dto}">  -->
+			<span th:class="${dto.sno%5==0}?'target'"> [[${dto}]]</span>   <!-- /* 위와 같은 코드 */ -->
+		</li>
+	</ul>
+
+	<ul>
+<!-- 	<li th:each="dto, state:${list}" th:text="${dto.sno % 5 == 0} ? ${dto.sno} : ${dto.first}"> -->
+		 <!-- 윗줄과 같은 코드임 -->
+		<th:block th:each="dto: ${list}">
+		<li th:text="${dto.sno % 5 == 0}? ${dto.sno} : ${dto.first}"></li> 
+		</th:block>
+	</ul>
+	
+</body>
+</html>

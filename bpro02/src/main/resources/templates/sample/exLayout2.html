@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<!-- <head> -->
+<!-- <meta charset="UTF-8"> -->
+<!-- <title>exLayout2</title> -->
+<!-- </head> -->
+<!-- <body> -->
+	<th:block th:replace="~{/fragments/fragment3:: target(~{this::#ulFirst},~{this::#ulSecond})}">
+	
+	<ul id="ulFirst">
+		<li>First AAA</li>
+		<li>First BBB</li>
+		<li>First CCC</li>
+	</ul>
+	<ul id="ulSecond">
+		<li>Second aaa</li>
+		<li>Second bbb</li>
+		<li>Second ccc</li>
+	</ul>
+
+	</th:block>
+	
+<!-- </body> -->
+<!-- </html> -->
